@@ -1,0 +1,78 @@
+config:
+  target: "{{ $processEnvironment.TARGET_URL }}"
+  processor: "./processor.js"
+  plugins:
+    metrics-by-endpoint: {}
+  tls:
+    rejectUnauthorized: false
+  defaults:
+    headers:
+      # Cookie se inyecta dinámicamente via processor.js
+      User-Agent: "{{ $processEnvironment.USER_AGENT }}"
+      Content-Type: "application/json"
+  environments:
+    smoke:
+      phases:
+        - duration: 10
+          arrivalRate: 1
+          name: "Prueba de Humo (Smoke Test)"
+    stress:
+      phases:
+        - duration: 60
+          arrivalRate: 1
+          rampTo: 5
+          name: "Fase 1: Carga Baja (1-5 usuarios/seg)"
+        - duration: 120
+          arrivalRate: 5
+          rampTo: 15
+          name: "Fase 2: Carga Media (5-15 usuarios/seg)"
+        - duration: 120
+          arrivalRate: 15
+          rampTo: 20
+          name: "Fase 3: Carga Alta (15-20 usuarios/seg)"
+    production:
+      phases:
+        - duration: 60
+          arrivalRate: 2
+          rampTo: 10
+          name: "Fase de Calentamiento"
+        - duration: 120
+          arrivalRate: 10
+          rampTo: 50
+          name: "Fase de Rampa"
+        - duration: 300
+          arrivalRate: 50
+          name: "Fase de Carga Sostenida"
+
+scenarios:
+  - name: "Navegación Admin"
+    flow:
+      - log: "Iniciando recorrido de endpoints Admin..."
+      
+      # Endpoints Placeholder (Usuario debe actualizar)
+      - get:
+          url: "/admin/dashboard/index" 
+          beforeRequest: "logHeaders"
+          afterResponse: "logResponse"
+      - get:
+          url: "/admin/geolocalizacion/index" 
+          beforeRequest: "logHeaders"
+          afterResponse: "logResponse"
+      - get:
+          url: "/admin" 
+          beforeRequest: "logHeaders"
+          afterResponse: "logResponse"
+      - get:
+          url: "/admin/casos-gestionados" 
+          beforeRequest: "logHeaders"
+          afterResponse: "logResponse"
+      - get:
+          url: "/admin/estados/index" 
+          beforeRequest: "logHeaders"
+          afterResponse: "logResponse"
+      - get:
+          url: "/admin/clasificaciones/index" 
+          beforeRequest: "logHeaders"
+          afterResponse: "logResponse"
+
+      - think: 1

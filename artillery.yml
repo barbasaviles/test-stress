@@ -1,0 +1,76 @@
+config:
+  target: "{{ $processEnvironment.TARGET_URL }}"
+  processor: "./processor.js"
+  plugins:
+    metrics-by-endpoint: {}
+  tls:
+    rejectUnauthorized: false
+  defaults:
+    headers:
+      # Cookie se inyecta dinámicamente via processor.js
+      User-Agent: "{{ $processEnvironment.USER_AGENT }}"
+      Content-Type: "application/json"
+  environments:
+    smoke:
+      phases:
+        - duration: 10
+          arrivalRate: 1
+          name: "Prueba de Humo (Smoke Test)"
+    stress:
+      phases:
+        - duration: 60
+          arrivalRate: 1
+          rampTo: 5
+          name: "Fase 1: Carga Baja (1-5 usuarios/seg)"
+        - duration: 120
+          arrivalRate: 5
+          rampTo: 15
+          name: "Fase 2: Carga Media (5-15 usuarios/seg)"
+        - duration: 120
+          arrivalRate: 15
+          rampTo: 20
+          name: "Fase 3: Carga Alta (15-20 usuarios/seg)"
+    production:
+      phases:
+        - duration: 60
+          arrivalRate: 2
+          rampTo: 10
+          name: "Fase de Calentamiento"
+        - duration: 120
+          arrivalRate: 10
+          rampTo: 50
+          name: "Fase de Rampa"
+        - duration: 300
+          arrivalRate: 50
+          name: "Fase de Carga Sostenida"
+
+scenarios:
+  - name: "Navegación Agentes y Casos"
+    flow:
+      - log: "Iniciando recorrido de endpoints..."
+      
+      - get:
+          url: "/agentes/site/index"
+          beforeRequest: "logHeaders"
+          afterResponse: "logResponse"
+
+      - think: 1
+
+      - get:
+          url: "/agentes/casos/update/14"
+          beforeRequest: "logHeaders"
+          afterResponse: "logResponse"
+
+      - think: 1
+
+      - get:
+          url: "/agentes/site/index/cliente/171"
+          beforeRequest: "logHeaders"
+          afterResponse: "logResponse"
+
+      - think: 1
+
+      - get:
+          url: "/agentes/casos/create/cliente/171/346"
+          beforeRequest: "logHeaders"
+          afterResponse: "logResponse"

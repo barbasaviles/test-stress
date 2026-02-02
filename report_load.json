@@ -1,0 +1,1528 @@
+{
+  "aggregate": {
+    "counters": {
+      "vusers.created_by_name.Navegación Agentes y Casos": 18960,
+      "vusers.created": 18960,
+      "http.requests": 19013,
+      "http.codes.200": 5,
+      "http.responses": 54,
+      "http.downloaded_bytes": 303918,
+      "plugins.metrics-by-endpoint./agentes/site/index.codes.200": 4,
+      "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 18907,
+      "errors.ETIMEDOUT": 18960,
+      "vusers.failed": 18960,
+      "plugins.metrics-by-endpoint./agentes/casos/update/14.errors.ETIMEDOUT": 53,
+      "http.codes.504": 49,
+      "plugins.metrics-by-endpoint./agentes/site/index.codes.504": 49
+    },
+    "rates": {
+      "http.request_rate": 41
+    },
+    "firstCounterAt": 1770058855120,
+    "firstHistogramAt": 1770058861031,
+    "lastCounterAt": 1770059347374,
+    "lastHistogramAt": 1770059243721,
+    "firstMetricAt": 1770058855120,
+    "lastMetricAt": 1770059347374,
+    "period": 1770059340000,
+    "summaries": {
+      "http.response_time": {
+        "min": 2225,
+        "max": 10821,
+        "count": 54,
+        "mean": 9940.9,
+        "p50": 10201.2,
+        "median": 10201.2,
+        "p75": 10407.3,
+        "p90": 10617.5,
+        "p95": 10832,
+        "p99": 10832,
+        "p999": 10832
+      },
+      "http.response_time.2xx": {
+        "min": 2225,
+        "max": 9677,
+        "count": 5,
+        "mean": 6033,
+        "p50": 6064.7,
+        "median": 6064.7,
+        "p75": 8024.5,
+        "p90": 8024.5,
+        "p95": 8024.5,
+        "p99": 8024.5,
+        "p999": 8024.5
+      },
+      "plugins.metrics-by-endpoint.response_time./agentes/site/index": {
+        "min": 2225,
+        "max": 10821,
+        "count": 53,
+        "mean": 9945.9,
+        "p50": 10201.2,
+        "median": 10201.2,
+        "p75": 10617.5,
+        "p90": 10617.5,
+        "p95": 10832,
+        "p99": 10832,
+        "p999": 10832
+      },
+      "http.response_time.5xx": {
+        "min": 10043,
+        "max": 10821,
+        "count": 49,
+        "mean": 10339.7,
+        "p50": 10201.2,
+        "median": 10201.2,
+        "p75": 10617.5,
+        "p90": 10617.5,
+        "p95": 10832,
+        "p99": 10832,
+        "p999": 10832
+      }
+    },
+    "histograms": {
+      "http.response_time": {
+        "min": 2225,
+        "max": 10821,
+        "count": 54,
+        "mean": 9940.9,
+        "p50": 10201.2,
+        "median": 10201.2,
+        "p75": 10407.3,
+        "p90": 10617.5,
+        "p95": 10832,
+        "p99": 10832,
+        "p999": 10832
+      },
+      "http.response_time.2xx": {
+        "min": 2225,
+        "max": 9677,
+        "count": 5,
+        "mean": 6033,
+        "p50": 6064.7,
+        "median": 6064.7,
+        "p75": 8024.5,
+        "p90": 8024.5,
+        "p95": 8024.5,
+        "p99": 8024.5,
+        "p999": 8024.5
+      },
+      "plugins.metrics-by-endpoint.response_time./agentes/site/index": {
+        "min": 2225,
+        "max": 10821,
+        "count": 53,
+        "mean": 9945.9,
+        "p50": 10201.2,
+        "median": 10201.2,
+        "p75": 10617.5,
+        "p90": 10617.5,
+        "p95": 10832,
+        "p99": 10832,
+        "p999": 10832
+      },
+      "http.response_time.5xx": {
+        "min": 10043,
+        "max": 10821,
+        "count": 49,
+        "mean": 10339.7,
+        "p50": 10201.2,
+        "median": 10201.2,
+        "p75": 10617.5,
+        "p90": 10617.5,
+        "p95": 10832,
+        "p99": 10832,
+        "p999": 10832
+      }
+    }
+  },
+  "intermediate": [
+    {
+      "counters": {
+        "vusers.created_by_name.Navegación Agentes y Casos": 9,
+        "vusers.created": 9,
+        "http.requests": 9
+      },
+      "rates": {
+        "http.request_rate": 5
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770058855120,
+      "lastCounterAt": 1770058859752,
+      "firstMetricAt": 1770058855120,
+      "lastMetricAt": 1770058859752,
+      "period": "1770058850000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "vusers.created_by_name.Navegación Agentes y Casos": 33,
+        "vusers.created": 33,
+        "http.requests": 37,
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 5,
+        "errors.ETIMEDOUT": 5,
+        "vusers.failed": 5,
+        "http.codes.200": 5,
+        "http.responses": 5,
+        "http.downloaded_bytes": 276380,
+        "plugins.metrics-by-endpoint./agentes/site/index.codes.200": 4
+      },
+      "rates": {
+        "http.request_rate": 5
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770058860178,
+      "firstHistogramAt": 1770058861031,
+      "lastCounterAt": 1770058869985,
+      "lastHistogramAt": 1770058868599,
+      "firstMetricAt": 1770058860178,
+      "lastMetricAt": 1770058869985,
+      "period": "1770058860000",
+      "summaries": {
+        "http.response_time": {
+          "min": 2225,
+          "max": 9677,
+          "count": 5,
+          "mean": 6033,
+          "p50": 6064.7,
+          "median": 6064.7,
+          "p75": 8024.5,
+          "p90": 8024.5,
+          "p95": 8024.5,
+          "p99": 8024.5,
+          "p999": 8024.5
+        },
+        "http.response_time.2xx": {
+          "min": 2225,
+          "max": 9677,
+          "count": 5,
+          "mean": 6033,
+          "p50": 6064.7,
+          "median": 6064.7,
+          "p75": 8024.5,
+          "p90": 8024.5,
+          "p95": 8024.5,
+          "p99": 8024.5,
+          "p999": 8024.5
+        },
+        "plugins.metrics-by-endpoint.response_time./agentes/site/index": {
+          "min": 2225,
+          "max": 8098,
+          "count": 4,
+          "mean": 5122,
+          "p50": 4147.4,
+          "median": 4147.4,
+          "p75": 6064.7,
+          "p90": 6064.7,
+          "p95": 6064.7,
+          "p99": 6064.7,
+          "p999": 6064.7
+        }
+      },
+      "histograms": {
+        "http.response_time": {
+          "min": 2225,
+          "max": 9677,
+          "count": 5,
+          "mean": 6033,
+          "p50": 6064.7,
+          "median": 6064.7,
+          "p75": 8024.5,
+          "p90": 8024.5,
+          "p95": 8024.5,
+          "p99": 8024.5,
+          "p999": 8024.5
+        },
+        "http.response_time.2xx": {
+          "min": 2225,
+          "max": 9677,
+          "count": 5,
+          "mean": 6033,
+          "p50": 6064.7,
+          "median": 6064.7,
+          "p75": 8024.5,
+          "p90": 8024.5,
+          "p95": 8024.5,
+          "p99": 8024.5,
+          "p999": 8024.5
+        },
+        "plugins.metrics-by-endpoint.response_time./agentes/site/index": {
+          "min": 2225,
+          "max": 8098,
+          "count": 4,
+          "mean": 5122,
+          "p50": 4147.4,
+          "median": 4147.4,
+          "p75": 6064.7,
+          "p90": 6064.7,
+          "p95": 6064.7,
+          "p99": 6064.7,
+          "p999": 6064.7
+        }
+      }
+    },
+    {
+      "counters": {
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 33,
+        "errors.ETIMEDOUT": 37,
+        "vusers.failed": 37,
+        "vusers.created_by_name.Navegación Agentes y Casos": 44,
+        "vusers.created": 44,
+        "http.requests": 44,
+        "plugins.metrics-by-endpoint./agentes/casos/update/14.errors.ETIMEDOUT": 4
+      },
+      "rates": {
+        "http.request_rate": 5
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770058870196,
+      "lastCounterAt": 1770058879989,
+      "firstMetricAt": 1770058870196,
+      "lastMetricAt": 1770058879989,
+      "period": "1770058870000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "vusers.created_by_name.Navegación Agentes y Casos": 60,
+        "vusers.created": 60,
+        "http.requests": 60,
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 44,
+        "errors.ETIMEDOUT": 44,
+        "vusers.failed": 44
+      },
+      "rates": {
+        "http.request_rate": 7
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770058880228,
+      "lastCounterAt": 1770058889726,
+      "firstMetricAt": 1770058880228,
+      "lastMetricAt": 1770058889726,
+      "period": "1770058880000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "vusers.created_by_name.Navegación Agentes y Casos": 73,
+        "vusers.created": 73,
+        "http.requests": 73,
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 60,
+        "errors.ETIMEDOUT": 60,
+        "vusers.failed": 60
+      },
+      "rates": {
+        "http.request_rate": 7
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770058890289,
+      "lastCounterAt": 1770058899899,
+      "firstMetricAt": 1770058890289,
+      "lastMetricAt": 1770058899899,
+      "period": "1770058890000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 73,
+        "errors.ETIMEDOUT": 73,
+        "vusers.failed": 73,
+        "vusers.created_by_name.Navegación Agentes y Casos": 86,
+        "vusers.created": 86,
+        "http.requests": 86
+      },
+      "rates": {
+        "http.request_rate": 9
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770058900327,
+      "lastCounterAt": 1770058909973,
+      "firstMetricAt": 1770058900327,
+      "lastMetricAt": 1770058909973,
+      "period": "1770058900000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 86,
+        "errors.ETIMEDOUT": 86,
+        "vusers.failed": 86,
+        "vusers.created_by_name.Navegación Agentes y Casos": 100,
+        "vusers.created": 100,
+        "http.requests": 100
+      },
+      "rates": {
+        "http.request_rate": 10
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770058910435,
+      "lastCounterAt": 1770058919986,
+      "firstMetricAt": 1770058910435,
+      "lastMetricAt": 1770058919986,
+      "period": "1770058910000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "vusers.created_by_name.Navegación Agentes y Casos": 131,
+        "vusers.created": 131,
+        "http.requests": 131,
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 100,
+        "errors.ETIMEDOUT": 100,
+        "vusers.failed": 100
+      },
+      "rates": {
+        "http.request_rate": 14
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770058920020,
+      "lastCounterAt": 1770058929860,
+      "firstMetricAt": 1770058920020,
+      "lastMetricAt": 1770058929860,
+      "period": "1770058920000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 131,
+        "errors.ETIMEDOUT": 131,
+        "vusers.failed": 131,
+        "vusers.created_by_name.Navegación Agentes y Casos": 162,
+        "vusers.created": 162,
+        "http.requests": 162
+      },
+      "rates": {
+        "http.request_rate": 17
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770058930033,
+      "lastCounterAt": 1770058939944,
+      "firstMetricAt": 1770058930033,
+      "lastMetricAt": 1770058939944,
+      "period": "1770058930000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "vusers.created_by_name.Navegación Agentes y Casos": 196,
+        "vusers.created": 196,
+        "http.requests": 196,
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 162,
+        "errors.ETIMEDOUT": 162,
+        "vusers.failed": 162
+      },
+      "rates": {
+        "http.request_rate": 20
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770058940033,
+      "lastCounterAt": 1770058949949,
+      "firstMetricAt": 1770058940033,
+      "lastMetricAt": 1770058949949,
+      "period": "1770058940000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 196,
+        "errors.ETIMEDOUT": 196,
+        "vusers.failed": 196,
+        "vusers.created_by_name.Navegación Agentes y Casos": 228,
+        "vusers.created": 228,
+        "http.requests": 228
+      },
+      "rates": {
+        "http.request_rate": 23
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770058950010,
+      "lastCounterAt": 1770058959963,
+      "firstMetricAt": 1770058950010,
+      "lastMetricAt": 1770058959963,
+      "period": "1770058950000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "vusers.created_by_name.Navegación Agentes y Casos": 265,
+        "vusers.created": 265,
+        "http.requests": 262,
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 228,
+        "errors.ETIMEDOUT": 228,
+        "vusers.failed": 228
+      },
+      "rates": {
+        "http.request_rate": 27
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770058960018,
+      "lastCounterAt": 1770058969995,
+      "firstMetricAt": 1770058960018,
+      "lastMetricAt": 1770058969995,
+      "period": "1770058960000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 262,
+        "errors.ETIMEDOUT": 262,
+        "vusers.failed": 262,
+        "vusers.created_by_name.Navegación Agentes y Casos": 292,
+        "vusers.created": 292,
+        "http.requests": 295
+      },
+      "rates": {
+        "http.request_rate": 29
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770058970000,
+      "lastCounterAt": 1770058979982,
+      "firstMetricAt": 1770058970000,
+      "lastMetricAt": 1770058979982,
+      "period": "1770058970000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 295,
+        "errors.ETIMEDOUT": 295,
+        "vusers.failed": 295,
+        "vusers.created_by_name.Navegación Agentes y Casos": 332,
+        "vusers.created": 332,
+        "http.requests": 332
+      },
+      "rates": {
+        "http.request_rate": 34
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770058980009,
+      "lastCounterAt": 1770058989988,
+      "firstMetricAt": 1770058980009,
+      "lastMetricAt": 1770058989988,
+      "period": "1770058980000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "vusers.created_by_name.Navegación Agentes y Casos": 362,
+        "vusers.created": 362,
+        "http.requests": 362,
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 332,
+        "errors.ETIMEDOUT": 332,
+        "vusers.failed": 332
+      },
+      "rates": {
+        "http.request_rate": 36
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770058990019,
+      "lastCounterAt": 1770058999992,
+      "firstMetricAt": 1770058990019,
+      "lastMetricAt": 1770058999992,
+      "period": "1770058990000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 360,
+        "errors.ETIMEDOUT": 360,
+        "vusers.failed": 360,
+        "vusers.created_by_name.Navegación Agentes y Casos": 398,
+        "vusers.created": 398,
+        "http.requests": 398
+      },
+      "rates": {
+        "http.request_rate": 40
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770059000009,
+      "lastCounterAt": 1770059009988,
+      "firstMetricAt": 1770059000009,
+      "lastMetricAt": 1770059009988,
+      "period": "1770059000000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "vusers.created_by_name.Navegación Agentes y Casos": 428,
+        "vusers.created": 428,
+        "http.requests": 427,
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 400,
+        "errors.ETIMEDOUT": 400,
+        "vusers.failed": 400
+      },
+      "rates": {
+        "http.request_rate": 43
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770059010004,
+      "lastCounterAt": 1770059019997,
+      "firstMetricAt": 1770059010004,
+      "lastMetricAt": 1770059019997,
+      "period": "1770059010000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 426,
+        "errors.ETIMEDOUT": 426,
+        "vusers.failed": 426,
+        "vusers.created_by_name.Navegación Agentes y Casos": 463,
+        "vusers.created": 463,
+        "http.requests": 464
+      },
+      "rates": {
+        "http.request_rate": 47
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770059020002,
+      "lastCounterAt": 1770059029997,
+      "firstMetricAt": 1770059020002,
+      "lastMetricAt": 1770059029997,
+      "period": "1770059020000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "vusers.created_by_name.Navegación Agentes y Casos": 492,
+        "vusers.created": 492,
+        "http.requests": 490,
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 465,
+        "errors.ETIMEDOUT": 465,
+        "vusers.failed": 465
+      },
+      "rates": {
+        "http.request_rate": 50
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770059030000,
+      "lastCounterAt": 1770059039997,
+      "firstMetricAt": 1770059030000,
+      "lastMetricAt": 1770059039997,
+      "period": "1770059030000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "vusers.created_by_name.Navegación Agentes y Casos": 500,
+        "vusers.created": 500,
+        "http.requests": 502,
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 489,
+        "errors.ETIMEDOUT": 489,
+        "vusers.failed": 489
+      },
+      "rates": {
+        "http.request_rate": 50
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770059040000,
+      "lastCounterAt": 1770059049999,
+      "firstMetricAt": 1770059040000,
+      "lastMetricAt": 1770059049999,
+      "period": "1770059040000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 502,
+        "errors.ETIMEDOUT": 501,
+        "vusers.failed": 501,
+        "vusers.created_by_name.Navegación Agentes y Casos": 501,
+        "vusers.created": 501,
+        "http.requests": 500
+      },
+      "rates": {
+        "http.request_rate": 50
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770059050000,
+      "lastCounterAt": 1770059059999,
+      "firstMetricAt": 1770059050000,
+      "lastMetricAt": 1770059059999,
+      "period": "1770059050000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "vusers.created_by_name.Navegación Agentes y Casos": 500,
+        "vusers.created": 500,
+        "http.requests": 499,
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 500,
+        "errors.ETIMEDOUT": 501,
+        "vusers.failed": 501
+      },
+      "rates": {
+        "http.request_rate": 50
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770059060000,
+      "lastCounterAt": 1770059069995,
+      "firstMetricAt": 1770059060000,
+      "lastMetricAt": 1770059069995,
+      "period": "1770059060000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "vusers.created_by_name.Navegación Agentes y Casos": 499,
+        "vusers.created": 499,
+        "http.requests": 501,
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 500,
+        "errors.ETIMEDOUT": 500,
+        "vusers.failed": 500
+      },
+      "rates": {
+        "http.request_rate": 50
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770059070000,
+      "lastCounterAt": 1770059079999,
+      "firstMetricAt": 1770059070000,
+      "lastMetricAt": 1770059079999,
+      "period": "1770059070000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "vusers.created_by_name.Navegación Agentes y Casos": 498,
+        "vusers.created": 498,
+        "http.requests": 497,
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 499,
+        "errors.ETIMEDOUT": 499,
+        "vusers.failed": 499
+      },
+      "rates": {
+        "http.request_rate": 50
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770059080000,
+      "lastCounterAt": 1770059089993,
+      "firstMetricAt": 1770059080000,
+      "lastMetricAt": 1770059089993,
+      "period": "1770059080000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 499,
+        "errors.ETIMEDOUT": 499,
+        "vusers.failed": 499,
+        "vusers.created_by_name.Navegación Agentes y Casos": 503,
+        "vusers.created": 503,
+        "http.requests": 502
+      },
+      "rates": {
+        "http.request_rate": 50
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770059090000,
+      "lastCounterAt": 1770059099999,
+      "firstMetricAt": 1770059090000,
+      "lastMetricAt": 1770059099999,
+      "period": "1770059090000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 500,
+        "errors.ETIMEDOUT": 500,
+        "vusers.failed": 500,
+        "vusers.created_by_name.Navegación Agentes y Casos": 500,
+        "vusers.created": 500,
+        "http.requests": 500
+      },
+      "rates": {
+        "http.request_rate": 50
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770059100000,
+      "lastCounterAt": 1770059109993,
+      "firstMetricAt": 1770059100000,
+      "lastMetricAt": 1770059109993,
+      "period": "1770059100000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 502,
+        "errors.ETIMEDOUT": 502,
+        "vusers.failed": 502,
+        "vusers.created_by_name.Navegación Agentes y Casos": 500,
+        "vusers.created": 500,
+        "http.requests": 501
+      },
+      "rates": {
+        "http.request_rate": 50
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770059110000,
+      "lastCounterAt": 1770059119999,
+      "firstMetricAt": 1770059110000,
+      "lastMetricAt": 1770059119999,
+      "period": "1770059110000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "vusers.created_by_name.Navegación Agentes y Casos": 500,
+        "vusers.created": 500,
+        "http.requests": 499,
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 499,
+        "errors.ETIMEDOUT": 499,
+        "vusers.failed": 499
+      },
+      "rates": {
+        "http.request_rate": 50
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770059120000,
+      "lastCounterAt": 1770059129998,
+      "firstMetricAt": 1770059120000,
+      "lastMetricAt": 1770059129998,
+      "period": "1770059120000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "vusers.created_by_name.Navegación Agentes y Casos": 497,
+        "vusers.created": 497,
+        "http.requests": 498,
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 499,
+        "errors.ETIMEDOUT": 499,
+        "vusers.failed": 499
+      },
+      "rates": {
+        "http.request_rate": 50
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770059130002,
+      "lastCounterAt": 1770059139990,
+      "firstMetricAt": 1770059130002,
+      "lastMetricAt": 1770059139990,
+      "period": "1770059130000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 500,
+        "errors.ETIMEDOUT": 500,
+        "vusers.failed": 500,
+        "vusers.created_by_name.Navegación Agentes y Casos": 503,
+        "vusers.created": 503,
+        "http.requests": 502
+      },
+      "rates": {
+        "http.request_rate": 50
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770059140005,
+      "lastCounterAt": 1770059149993,
+      "firstMetricAt": 1770059140005,
+      "lastMetricAt": 1770059149993,
+      "period": "1770059140000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 501,
+        "errors.ETIMEDOUT": 501,
+        "vusers.failed": 501,
+        "vusers.created_by_name.Navegación Agentes y Casos": 500,
+        "vusers.created": 500,
+        "http.requests": 502
+      },
+      "rates": {
+        "http.request_rate": 50
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770059150000,
+      "lastCounterAt": 1770059159999,
+      "firstMetricAt": 1770059150000,
+      "lastMetricAt": 1770059159999,
+      "period": "1770059150000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "vusers.created_by_name.Navegación Agentes y Casos": 500,
+        "vusers.created": 500,
+        "http.requests": 499,
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 500,
+        "errors.ETIMEDOUT": 500,
+        "vusers.failed": 500
+      },
+      "rates": {
+        "http.request_rate": 50
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770059160000,
+      "lastCounterAt": 1770059169998,
+      "firstMetricAt": 1770059160000,
+      "lastMetricAt": 1770059169998,
+      "period": "1770059160000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 500,
+        "errors.ETIMEDOUT": 500,
+        "vusers.failed": 500,
+        "vusers.created_by_name.Navegación Agentes y Casos": 500,
+        "vusers.created": 500,
+        "http.requests": 499
+      },
+      "rates": {
+        "http.request_rate": 50
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770059170000,
+      "lastCounterAt": 1770059179994,
+      "firstMetricAt": 1770059170000,
+      "lastMetricAt": 1770059179994,
+      "period": "1770059170000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 501,
+        "errors.ETIMEDOUT": 501,
+        "vusers.failed": 501,
+        "vusers.created_by_name.Navegación Agentes y Casos": 500,
+        "vusers.created": 500,
+        "http.requests": 502
+      },
+      "rates": {
+        "http.request_rate": 50
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770059180000,
+      "lastCounterAt": 1770059189999,
+      "firstMetricAt": 1770059180000,
+      "lastMetricAt": 1770059189999,
+      "period": "1770059180000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "vusers.created_by_name.Navegación Agentes y Casos": 496,
+        "vusers.created": 496,
+        "http.requests": 496,
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 498,
+        "errors.ETIMEDOUT": 498,
+        "vusers.failed": 498
+      },
+      "rates": {
+        "http.request_rate": 50
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770059190000,
+      "lastCounterAt": 1770059199958,
+      "firstMetricAt": 1770059190000,
+      "lastMetricAt": 1770059199958,
+      "period": "1770059190000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "vusers.created_by_name.Navegación Agentes y Casos": 504,
+        "vusers.created": 504,
+        "http.requests": 503,
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 500,
+        "errors.ETIMEDOUT": 500,
+        "vusers.failed": 500
+      },
+      "rates": {
+        "http.request_rate": 50
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770059200001,
+      "lastCounterAt": 1770059209999,
+      "firstMetricAt": 1770059200001,
+      "lastMetricAt": 1770059209999,
+      "period": "1770059200000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 467,
+        "errors.ETIMEDOUT": 467,
+        "vusers.failed": 467,
+        "vusers.created_by_name.Navegación Agentes y Casos": 478,
+        "vusers.created": 478,
+        "http.requests": 477,
+        "http.codes.504": 33,
+        "http.responses": 33,
+        "http.downloaded_bytes": 18546,
+        "plugins.metrics-by-endpoint./agentes/site/index.codes.504": 33
+      },
+      "rates": {
+        "http.request_rate": 49
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770059210003,
+      "firstHistogramAt": 1770059219846,
+      "lastCounterAt": 1770059219999,
+      "lastHistogramAt": 1770059219926,
+      "firstMetricAt": 1770059210003,
+      "lastMetricAt": 1770059219999,
+      "period": "1770059210000",
+      "summaries": {
+        "http.response_time": {
+          "min": 10130,
+          "max": 10821,
+          "count": 33,
+          "mean": 10461.2,
+          "p50": 10407.3,
+          "median": 10407.3,
+          "p75": 10617.5,
+          "p90": 10617.5,
+          "p95": 10832,
+          "p99": 10832,
+          "p999": 10832
+        },
+        "http.response_time.5xx": {
+          "min": 10130,
+          "max": 10821,
+          "count": 33,
+          "mean": 10461.2,
+          "p50": 10407.3,
+          "median": 10407.3,
+          "p75": 10617.5,
+          "p90": 10617.5,
+          "p95": 10832,
+          "p99": 10832,
+          "p999": 10832
+        },
+        "plugins.metrics-by-endpoint.response_time./agentes/site/index": {
+          "min": 10130,
+          "max": 10821,
+          "count": 33,
+          "mean": 10461.2,
+          "p50": 10407.3,
+          "median": 10407.3,
+          "p75": 10617.5,
+          "p90": 10617.5,
+          "p95": 10832,
+          "p99": 10832,
+          "p999": 10832
+        }
+      },
+      "histograms": {
+        "http.response_time": {
+          "min": 10130,
+          "max": 10821,
+          "count": 33,
+          "mean": 10461.2,
+          "p50": 10407.3,
+          "median": 10407.3,
+          "p75": 10617.5,
+          "p90": 10617.5,
+          "p95": 10832,
+          "p99": 10832,
+          "p999": 10832
+        },
+        "http.response_time.5xx": {
+          "min": 10130,
+          "max": 10821,
+          "count": 33,
+          "mean": 10461.2,
+          "p50": 10407.3,
+          "median": 10407.3,
+          "p75": 10617.5,
+          "p90": 10617.5,
+          "p95": 10832,
+          "p99": 10832,
+          "p999": 10832
+        },
+        "plugins.metrics-by-endpoint.response_time./agentes/site/index": {
+          "min": 10130,
+          "max": 10821,
+          "count": 33,
+          "mean": 10461.2,
+          "p50": 10407.3,
+          "median": 10407.3,
+          "p75": 10617.5,
+          "p90": 10617.5,
+          "p95": 10832,
+          "p99": 10832,
+          "p999": 10832
+        }
+      }
+    },
+    {
+      "counters": {
+        "vusers.created_by_name.Navegación Agentes y Casos": 519,
+        "vusers.created": 519,
+        "http.requests": 554,
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 477,
+        "errors.ETIMEDOUT": 477,
+        "vusers.failed": 477
+      },
+      "rates": {
+        "http.request_rate": 57
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770059220005,
+      "lastCounterAt": 1770059229999,
+      "firstMetricAt": 1770059220005,
+      "lastMetricAt": 1770059229999,
+      "period": "1770059220000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 515,
+        "errors.ETIMEDOUT": 548,
+        "vusers.failed": 548,
+        "vusers.created_by_name.Navegación Agentes y Casos": 501,
+        "vusers.created": 501,
+        "http.requests": 510,
+        "plugins.metrics-by-endpoint./agentes/casos/update/14.errors.ETIMEDOUT": 33,
+        "http.codes.504": 9,
+        "http.responses": 9,
+        "http.downloaded_bytes": 5058,
+        "plugins.metrics-by-endpoint./agentes/site/index.codes.504": 9
+      },
+      "rates": {
+        "http.request_rate": 50
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770059230003,
+      "firstHistogramAt": 1770059235967,
+      "lastCounterAt": 1770059239997,
+      "lastHistogramAt": 1770059235975,
+      "firstMetricAt": 1770059230003,
+      "lastMetricAt": 1770059239997,
+      "period": "1770059230000",
+      "summaries": {
+        "http.response_time": {
+          "min": 10089,
+          "max": 10117,
+          "count": 9,
+          "mean": 10099.3,
+          "p50": 9999.2,
+          "median": 9999.2,
+          "p75": 10201.2,
+          "p90": 10201.2,
+          "p95": 10201.2,
+          "p99": 10201.2,
+          "p999": 10201.2
+        },
+        "http.response_time.5xx": {
+          "min": 10089,
+          "max": 10117,
+          "count": 9,
+          "mean": 10099.3,
+          "p50": 9999.2,
+          "median": 9999.2,
+          "p75": 10201.2,
+          "p90": 10201.2,
+          "p95": 10201.2,
+          "p99": 10201.2,
+          "p999": 10201.2
+        },
+        "plugins.metrics-by-endpoint.response_time./agentes/site/index": {
+          "min": 10089,
+          "max": 10117,
+          "count": 9,
+          "mean": 10099.3,
+          "p50": 9999.2,
+          "median": 9999.2,
+          "p75": 10201.2,
+          "p90": 10201.2,
+          "p95": 10201.2,
+          "p99": 10201.2,
+          "p999": 10201.2
+        }
+      },
+      "histograms": {
+        "http.response_time": {
+          "min": 10089,
+          "max": 10117,
+          "count": 9,
+          "mean": 10099.3,
+          "p50": 9999.2,
+          "median": 9999.2,
+          "p75": 10201.2,
+          "p90": 10201.2,
+          "p95": 10201.2,
+          "p99": 10201.2,
+          "p999": 10201.2
+        },
+        "http.response_time.5xx": {
+          "min": 10089,
+          "max": 10117,
+          "count": 9,
+          "mean": 10099.3,
+          "p50": 9999.2,
+          "median": 9999.2,
+          "p75": 10201.2,
+          "p90": 10201.2,
+          "p95": 10201.2,
+          "p99": 10201.2,
+          "p999": 10201.2
+        },
+        "plugins.metrics-by-endpoint.response_time./agentes/site/index": {
+          "min": 10089,
+          "max": 10117,
+          "count": 9,
+          "mean": 10099.3,
+          "p50": 9999.2,
+          "median": 9999.2,
+          "p75": 10201.2,
+          "p90": 10201.2,
+          "p95": 10201.2,
+          "p99": 10201.2,
+          "p999": 10201.2
+        }
+      }
+    },
+    {
+      "counters": {
+        "vusers.created_by_name.Navegación Agentes y Casos": 503,
+        "vusers.created": 503,
+        "http.requests": 508,
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 494,
+        "errors.ETIMEDOUT": 503,
+        "vusers.failed": 503,
+        "plugins.metrics-by-endpoint./agentes/casos/update/14.errors.ETIMEDOUT": 9,
+        "http.codes.504": 7,
+        "http.responses": 7,
+        "http.downloaded_bytes": 3934,
+        "plugins.metrics-by-endpoint./agentes/site/index.codes.504": 7
+      },
+      "rates": {
+        "http.request_rate": 50
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770059240037,
+      "firstHistogramAt": 1770059241821,
+      "lastCounterAt": 1770059249999,
+      "lastHistogramAt": 1770059243721,
+      "firstMetricAt": 1770059240037,
+      "lastMetricAt": 1770059249999,
+      "period": "1770059240000",
+      "summaries": {
+        "http.response_time": {
+          "min": 10043,
+          "max": 10180,
+          "count": 7,
+          "mean": 10075.6,
+          "p50": 9999.2,
+          "median": 9999.2,
+          "p75": 9999.2,
+          "p90": 9999.2,
+          "p95": 9999.2,
+          "p99": 9999.2,
+          "p999": 9999.2
+        },
+        "http.response_time.5xx": {
+          "min": 10043,
+          "max": 10180,
+          "count": 7,
+          "mean": 10075.6,
+          "p50": 9999.2,
+          "median": 9999.2,
+          "p75": 9999.2,
+          "p90": 9999.2,
+          "p95": 9999.2,
+          "p99": 9999.2,
+          "p999": 9999.2
+        },
+        "plugins.metrics-by-endpoint.response_time./agentes/site/index": {
+          "min": 10043,
+          "max": 10180,
+          "count": 7,
+          "mean": 10075.6,
+          "p50": 9999.2,
+          "median": 9999.2,
+          "p75": 9999.2,
+          "p90": 9999.2,
+          "p95": 9999.2,
+          "p99": 9999.2,
+          "p999": 9999.2
+        }
+      },
+      "histograms": {
+        "http.response_time": {
+          "min": 10043,
+          "max": 10180,
+          "count": 7,
+          "mean": 10075.6,
+          "p50": 9999.2,
+          "median": 9999.2,
+          "p75": 9999.2,
+          "p90": 9999.2,
+          "p95": 9999.2,
+          "p99": 9999.2,
+          "p999": 9999.2
+        },
+        "http.response_time.5xx": {
+          "min": 10043,
+          "max": 10180,
+          "count": 7,
+          "mean": 10075.6,
+          "p50": 9999.2,
+          "median": 9999.2,
+          "p75": 9999.2,
+          "p90": 9999.2,
+          "p95": 9999.2,
+          "p99": 9999.2,
+          "p999": 9999.2
+        },
+        "plugins.metrics-by-endpoint.response_time./agentes/site/index": {
+          "min": 10043,
+          "max": 10180,
+          "count": 7,
+          "mean": 10075.6,
+          "p50": 9999.2,
+          "median": 9999.2,
+          "p75": 9999.2,
+          "p90": 9999.2,
+          "p95": 9999.2,
+          "p99": 9999.2,
+          "p999": 9999.2
+        }
+      }
+    },
+    {
+      "counters": {
+        "http.requests": 499,
+        "vusers.created_by_name.Navegación Agentes y Casos": 500,
+        "vusers.created": 500,
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 499,
+        "errors.ETIMEDOUT": 506,
+        "vusers.failed": 506,
+        "plugins.metrics-by-endpoint./agentes/casos/update/14.errors.ETIMEDOUT": 7
+      },
+      "rates": {
+        "http.request_rate": 50
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770059250002,
+      "lastCounterAt": 1770059259999,
+      "firstMetricAt": 1770059250002,
+      "lastMetricAt": 1770059259999,
+      "period": "1770059250000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 497,
+        "errors.ETIMEDOUT": 497,
+        "vusers.failed": 497,
+        "vusers.created_by_name.Navegación Agentes y Casos": 499,
+        "vusers.created": 499,
+        "http.requests": 501
+      },
+      "rates": {
+        "http.request_rate": 50
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770059260000,
+      "lastCounterAt": 1770059269997,
+      "firstMetricAt": 1770059260000,
+      "lastMetricAt": 1770059269997,
+      "period": "1770059260000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 504,
+        "errors.ETIMEDOUT": 504,
+        "vusers.failed": 504,
+        "vusers.created_by_name.Navegación Agentes y Casos": 500,
+        "vusers.created": 500,
+        "http.requests": 500
+      },
+      "rates": {
+        "http.request_rate": 50
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770059270000,
+      "lastCounterAt": 1770059279999,
+      "firstMetricAt": 1770059270000,
+      "lastMetricAt": 1770059279999,
+      "period": "1770059270000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "http.requests": 500,
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 500,
+        "errors.ETIMEDOUT": 500,
+        "vusers.failed": 500,
+        "vusers.created_by_name.Navegación Agentes y Casos": 499,
+        "vusers.created": 499
+      },
+      "rates": {
+        "http.request_rate": 50
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770059280000,
+      "lastCounterAt": 1770059289999,
+      "firstMetricAt": 1770059280000,
+      "lastMetricAt": 1770059289999,
+      "period": "1770059280000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 498,
+        "errors.ETIMEDOUT": 498,
+        "vusers.failed": 498,
+        "vusers.created_by_name.Navegación Agentes y Casos": 501,
+        "vusers.created": 501,
+        "http.requests": 501
+      },
+      "rates": {
+        "http.request_rate": 50
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770059290000,
+      "lastCounterAt": 1770059299999,
+      "firstMetricAt": 1770059290000,
+      "lastMetricAt": 1770059299999,
+      "period": "1770059290000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 502,
+        "errors.ETIMEDOUT": 502,
+        "vusers.failed": 502,
+        "vusers.created_by_name.Navegación Agentes y Casos": 500,
+        "vusers.created": 500,
+        "http.requests": 500
+      },
+      "rates": {
+        "http.request_rate": 50
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770059300000,
+      "lastCounterAt": 1770059309998,
+      "firstMetricAt": 1770059300000,
+      "lastMetricAt": 1770059309998,
+      "period": "1770059300000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "vusers.created_by_name.Navegación Agentes y Casos": 500,
+        "vusers.created": 500,
+        "http.requests": 499,
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 499,
+        "errors.ETIMEDOUT": 499,
+        "vusers.failed": 499
+      },
+      "rates": {
+        "http.request_rate": 50
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770059310000,
+      "lastCounterAt": 1770059319997,
+      "firstMetricAt": 1770059310000,
+      "lastMetricAt": 1770059319997,
+      "period": "1770059310000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 501,
+        "errors.ETIMEDOUT": 501,
+        "vusers.failed": 501,
+        "vusers.created_by_name.Navegación Agentes y Casos": 499,
+        "vusers.created": 499,
+        "http.requests": 500
+      },
+      "rates": {
+        "http.request_rate": 50
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770059320000,
+      "lastCounterAt": 1770059329999,
+      "firstMetricAt": 1770059320000,
+      "lastMetricAt": 1770059329999,
+      "period": "1770059320000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "vusers.created_by_name.Navegación Agentes y Casos": 306,
+        "vusers.created": 306,
+        "http.requests": 306,
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 499,
+        "errors.ETIMEDOUT": 499,
+        "vusers.failed": 499
+      },
+      "rates": {
+        "http.request_rate": 50
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1770059330000,
+      "lastCounterAt": 1770059339995,
+      "firstMetricAt": 1770059330000,
+      "lastMetricAt": 1770059339995,
+      "period": "1770059330000",
+      "summaries": {},
+      "histograms": {}
+    },
+    {
+      "counters": {
+        "plugins.metrics-by-endpoint./agentes/site/index.errors.ETIMEDOUT": 308,
+        "errors.ETIMEDOUT": 308,
+        "vusers.failed": 308
+      },
+      "rates": {},
+      "firstCounterAt": 1770059340011,
+      "lastCounterAt": 1770059347374,
+      "firstMetricAt": 1770059340011,
+      "lastMetricAt": 1770059347374,
+      "period": "1770059340000",
+      "summaries": {},
+      "histograms": {}
+    }
+  ]
+}
