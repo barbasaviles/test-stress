@@ -1,0 +1,6 @@
+.env
+node_modules
+responses.log
+report_*.html
+report_*.json
+test.log
