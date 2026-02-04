@@ -19,8 +19,8 @@ config:
     stress:
       phases:
         - duration: 60
-          arrivalRate: 1
-          rampTo: 5
+          arrivalRate: 1 #cuántos usuarios virtuales nuevos por segundo arrancan al inicio de la fase
+          rampTo: 5 #cuántos usuarios por segundo va creciendo progresivamente
           name: "Fase 1: Carga Baja (1-5 usuarios/seg)"
         - duration: 120
           arrivalRate: 5
@@ -74,5 +74,34 @@ scenarios:
           url: "/admin/clasificaciones/index" 
           beforeRequest: "logHeaders"
           afterResponse: "logResponse"
+      - get:
+          url: "/admin/grupos/index" 
+          beforeRequest: "logHeaders"
+          afterResponse: "logResponse"
+      - get:
+          url: "/admin/service-accounts/index" 
+          beforeRequest: "logHeaders"
+          afterResponse: "logResponse"
+      - get:
+          url: "/admin/horarios/index" 
+          beforeRequest: "logHeaders"
+          afterResponse: "logResponse"
+      - get:
+          url: "/admin/usuarios/index" 
+          beforeRequest: "logHeaders"
+          afterResponse: "logResponse"
+      - get:
+          url: "/admin/boveda-secretos/index" 
+          beforeRequest: "logHeaders"
+          afterResponse: "logResponse"
+      - get:
+          url: "/admin/direcciones-permitidas/index" 
+          beforeRequest: "logHeaders"
+          afterResponse: "logResponse"
+      - get:
+          url: "/admin/app-config/index" 
+          beforeRequest: "logHeaders"
+          afterResponse: "logResponse"
+
 
       - think: 1
