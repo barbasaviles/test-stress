@@ -84,6 +84,20 @@ Todos estos comandos ahora suben a la nube:
 | `npm run test:load:admin` | Prueba de carga para admin |
 | `npm run test:stress:admin` | Prueba de estrés para admin |
 
+## 📤 Subida Manual de Reportes Existentes
+
+Si tienes un reporte JSON generado localmente que no fue grabado automáticamente, puedes subirlo manualmente con:
+
+```bash
+npm run publish:cloud <ruta-de-archivo.json>
+```
+
+**Ejemplo:**
+```bash
+npm run publish:cloud report_smoke_admin.json
+```
+
+---
 ## 📝 Notas
 
 - Los reportes locales (JSON y HTML) se siguen generando normalmente

@@ -16,6 +16,7 @@
     "report:load:admin": "npm run test:load:admin && node generate-report.js report_load_admin.json",
     "report:stress": "npm run test:stress && node generate-report.js report_stress.json",
     "report:stress:admin": "npm run test:stress:admin && node generate-report.js report_stress_admin.json",
+    "publish:cloud": "dotenv -e .env -- artillery publish",
     "generate-report": "node generate-report.js"
   },
   "keywords": [
