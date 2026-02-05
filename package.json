@@ -4,12 +4,19 @@
   "description": "Pruebas de carga automatizadas con Artillery",
   "main": "processor.js",
   "scripts": {
-    "test:smoke": "dotenv -e .env -- artillery run artillery.yml --environment smoke --output report_smoke.json && artillery report report_smoke.json --output report_smoke.html",
-    "test:load": "dotenv -e .env -- artillery run artillery.yml --environment production --output report_load.json && artillery report report_load.json --output report_load.html",
-    "test:smoke:admin": "dotenv -e .env -- artillery run artillery-admin.yml --environment smoke --output report_smoke_admin.json && artillery report report_smoke_admin.json --output report_smoke_admin.html",
-    "test:load:admin": "dotenv -e .env -- artillery run artillery-admin.yml --environment production --output report_load_admin.json && artillery report report_load_admin.json --output report_load_admin.html",
-    "test:stress": "dotenv -e .env -- artillery run artillery.yml --environment stress --output report_stress.json && artillery report report_stress.json --output report_stress.html",
-    "test:stress:admin": "dotenv -e .env -- artillery run artillery-admin.yml --environment stress --output report_stress_admin.json && artillery report report_stress_admin.json --output report_stress_admin.html"
+    "test:smoke": "dotenv -e .env -- artillery run artillery.yml --environment smoke --record --output report_smoke.json",
+    "test:load": "dotenv -e .env -- artillery run artillery.yml --environment production --record --output report_load.json",
+    "test:smoke:admin": "dotenv -e .env -- artillery run artillery-admin.yml --environment smoke --record --output report_smoke_admin.json",
+    "test:load:admin": "dotenv -e .env -- artillery run artillery-admin.yml --environment production --record --output report_load_admin.json",
+    "test:stress": "dotenv -e .env -- artillery run artillery.yml --environment stress --record --output report_stress.json",
+    "test:stress:admin": "dotenv -e .env -- artillery run artillery-admin.yml --environment stress --record --output report_stress_admin.json",
+    "report:smoke": "npm run test:smoke && node generate-report.js report_smoke.json",
+    "report:load": "npm run test:load && node generate-report.js report_load.json",
+    "report:smoke:admin": "npm run test:smoke:admin && node generate-report.js report_smoke_admin.json",
+    "report:load:admin": "npm run test:load:admin && node generate-report.js report_load_admin.json",
+    "report:stress": "npm run test:stress && node generate-report.js report_stress.json",
+    "report:stress:admin": "npm run test:stress:admin && node generate-report.js report_stress_admin.json",
+    "generate-report": "node generate-report.js"
   },
   "keywords": [
     "load-test",
@@ -19,10 +26,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "artillery": "2.0.21",
+    "artillery": "^2.0.29",
     "asynckit": "^0.5.0",
     "dotenv": "^16.0.0",
-    "undici": "5.29.0"
+    "undici": "^7.20.0"
   },
   "devDependencies": {
     "dotenv-cli": "^11.0.0"

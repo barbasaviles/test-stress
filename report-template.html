@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artillery Load Test Report</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-card: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --accent: #3b82f6;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --border: #e2e8f0;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --border: #475569;
+            --shadow: rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 1.5rem 2rem;
+            background: var(--bg-card);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent), var(--success));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.5rem;
+        }
+
+        .timestamp {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .theme-toggle {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.5rem 1.25rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px var(--shadow);
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px var(--shadow);
+        }
+
+        /* Smaller Metric Cards */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 8px var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        .metric-label {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.25rem;
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .metric-unit {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .metric-sublabel {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            margin-top: 0.125rem;
+        }
+
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+            margin-top: 1rem;
+            background: var(--bg-card);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .summary-table th,
+        .summary-table td {
+            padding: 1rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .summary-table th {
+            background: var(--bg-secondary);
+            font-weight: 700;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+        }
+
+        .summary-table td {
+            color: var(--text-secondary);
+        }
+
+        .summary-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .summary-table tr:hover {
+            background: var(--bg-secondary);
+        }
+
+        .summary-table .metric-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            width: 30%;
+        }
+
+        .summary-table .metric-val {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 1.1rem;
+            width: 25%;
+        }
+
+        .summary-table .metric-desc {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .section {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 8px var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .intro-section {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(59, 130, 246, 0.02) 100%);
+            border-left: 4px solid var(--accent);
+            line-height: 1.6;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+        }
+
+        .intro-section strong {
+            color: var(--accent);
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Tabs System */
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 0;
+        }
+
+        .tab-button {
+            background: transparent;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            bottom: -2px;
+        }
+
+        .tab-button:hover {
+            color: var(--accent);
+        }
+
+        .tab-button.active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 250px;
+            margin-top: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+            margin-top: 1rem;
+        }
+
+        th {
+            background: var(--bg-secondary);
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 2px solid var(--border);
+        }
+
+        td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        tr:hover {
+            background: var(--bg-secondary);
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            border-left: 4px solid;
+        }
+
+        .alert-error {
+            background: rgba(239, 68, 68, 0.1);
+            border-color: var(--error);
+            color: var(--error);
+        }
+
+        .alert-warning {
+            background: rgba(245, 158, 11, 0.1);
+            border-color: var(--warning);
+            color: var(--warning);
+        }
+
+        .alert-success {
+            background: rgba(16, 185, 129, 0.1);
+            border-color: var(--success);
+            color: var(--success);
+        }
+
+        .status-good {
+            color: var(--success);
+        }
+
+        .status-warning {
+            color: var(--warning);
+        }
+
+        .status-error {
+            color: var(--error);
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 1rem;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .stat-name {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .stat-value {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        code {
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+            padding: 0.125rem 0.375rem;
+            background: var(--bg-secondary);
+            border-radius: 4px;
+            color: var(--accent);
+        }
+
+        .recommendations {
+            background: rgba(59, 130, 246, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .recommendations h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--accent);
+        }
+
+        .recommendations ul {
+            margin-left: 1.5rem;
+            font-size: 0.875rem;
+            color: var(--text-primary);
+        }
+
+        .recommendations li {
+            margin-bottom: 0.5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge-success {
+            background: var(--success);
+            color: white;
+        }
+
+        .badge-warning {
+            background: var(--warning);
+            color: white;
+        }
+
+        .badge-error {
+            background: var(--error);
+            color: white;
+        }
+
+        .metadata-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .metadata-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .metadata-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .metadata-value {
+            font-size: 0.875rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        @media print {
+            .theme-toggle {
+                display: none;
+            }
+
+            .tabs {
+                display: none;
+            }
+
+            .chart-wrapper {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <h1>🚀 Artillery Load Test Report</h1>
+                <div class="timestamp" id="timestamp"></div>
+            </div>
+            <div class="header-info">
+                <button class="theme-toggle" onclick="toggleTheme()">🌙 Toggle Theme</button>
+            </div>
+        </header>
+
+        <!-- Artillery Introduction -->
+        <div class="section intro-section">
+            <p>
+                <strong>Artillery</strong> es una herramienta de pruebas de carga y rendimiento moderna, potente y fácil
+                de usar,
+                diseñada para aplicaciones y servicios digitales. Este reporte detalla el comportamiento del sistema
+                bajo
+                condiciones simuladas de tráfico, permitiendo identificar cuellos de botella, latencias y la capacidad
+                de
+                respuesta de los endpoints evaluados para asegurar una experiencia de usuario óptima.
+            </p>
+        </div>
+
+        <!-- Key Performance Indicators (Table View) -->
+        <div class="section">
+            <h2>📈 Summary Results</h2>
+            <table class="summary-table">
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Value</th>
+                        <th>Description / Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="metric-name">Total Requests</td>
+                        <td class="metric-val" id="total-requests">-</td>
+                        <td class="metric-desc">Total de peticiones realizadas durante la prueba.</td>
+                    </tr>
+                    <tr>
+                        <td class="metric-name">Success Rate</td>
+                        <td class="metric-val" id="success-rate">-</td>
+                        <td class="metric-desc" id="success-count">-</td>
+                    </tr>
+                    <tr>
+                        <td class="metric-name">Average Response</td>
+                        <td class="metric-val" id="avg-response">-</td>
+                        <td class="metric-desc">Tiempo promedio que tardó el servidor en responder.</td>
+                    </tr>
+                    <tr>
+                        <td class="metric-name">P95 Response</td>
+                        <td class="metric-val" id="p95-response">-</td>
+                        <td class="metric-desc">El 95% de las peticiones fueron más rápidas que este valor.</td>
+                    </tr>
+                    <tr>
+                        <td class="metric-name">P99 Response</td>
+                        <td class="metric-val" id="p99-response">-</td>
+                        <td class="metric-desc">Punto de referencia para el 1% de las peticiones más lentas.</td>
+                    </tr>
+                    <tr>
+                        <td class="metric-name">Throughput (RPS)</td>
+                        <td class="metric-val" id="throughput">-</td>
+                        <td class="metric-desc">Peticiones procesadas por segundo.</td>
+                    </tr>
+                    <tr>
+                        <td class="metric-name">Apdex Score</td>
+                        <td class="metric-val" id="apdex">-</td>
+                        <td class="metric-desc" id="apdex-rating">-</td>
+                    </tr>
+                    <tr>
+                        <td class="metric-name">Errors</td>
+                        <td class="metric-val" id="error-rate">-</td>
+                        <td class="metric-desc" id="error-count">-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Metadata Section (Data-Driven) -->
+        <div class="section">
+            <h2>📋 Run Information</h2>
+            <div class="metadata-grid">
+                <div class="metadata-item">
+                    <div class="metadata-label">Scenario Name</div>
+                    <div class="metadata-value" id="metadata-scenario">-</div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-label">Start Time</div>
+                    <div class="metadata-value" id="metadata-start-time">-</div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-label">Analysis Duration</div>
+                    <div class="metadata-value" id="metadata-duration">-</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alerts -->
+        <div class="section" id="alerts-section" style="display: none;">
+            <h2>🚨 Alerts</h2>
+            <div id="alerts-container"></div>
+        </div>
+
+        <!-- Tabs for Charts -->
+        <div class="section" id="charts-section">
+            <h2>� Performance Charts</h2>
+            <div class="tabs">
+                <button class="tab-button active" onclick="switchTab('charts', 0)">Response Time</button>
+                <button class="tab-button" onclick="switchTab('charts', 1)">Throughput</button>
+                <button class="tab-button" onclick="switchTab('charts', 2)">HTTP Codes</button>
+            </div>
+
+            <div class="tab-content active" id="charts-tab-0">
+                <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.875rem;">
+                    Evolución de los tiempos de respuesta a lo largo de la prueba. <strong>Median</strong> representa la
+                    experiencia típica del usuario,
+                    <strong>P95</strong> cubre el 95% de las peticiones, y <strong>P99</strong> muestra los peores
+                    casos.
+                    Líneas más planas indican mejor consistencia. Picos repentinos pueden indicar problemas de recursos,
+                    saturación de base de datos,
+                    o throttling. Un aumento gradual sugiere memory leaks o degradación bajo carga sostenida.
+                </p>
+                <div class="chart-wrapper">
+                    <canvas id="responseTimeChart"></canvas>
+                </div>
+            </div>
+
+            <div class="tab-content" id="charts-tab-1">
+                <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.875rem;">
+                    Volumen de peticiones procesadas (verde) vs errores encontrados (rojo) durante la prueba.
+                    Un throughput constante con errores bajos indica estabilidad del sistema.
+                    Picos de errores durante alta carga señalan límites de capacidad o puntos de quiebre.
+                    Si los errores aumentan mientras el throughput se mantiene, puede indicar timeouts o circuit
+                    breakers activándose.
+                </p>
+                <div class="chart-wrapper">
+                    <canvas id="throughputChart"></canvas>
+                </div>
+            </div>
+
+            <div class="tab-content" id="charts-tab-2">
+                <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.875rem;">
+                    Distribución de códigos de respuesta HTTP. <strong>2xx</strong> indica éxito, <strong>3xx</strong>
+                    redirecciones,
+                    <strong>4xx</strong> errores del cliente (bad requests, unauthorized, not found),
+                    <strong>5xx</strong> errores del servidor
+                    (internal errors, service unavailable). Idealmente deberías ver solo códigos 2xx. Un alto porcentaje
+                    de 5xx indica problemas
+                    de backend que requieren atención inmediata.
+                </p>
+                <div class="chart-wrapper">
+                    <canvas id="httpCodesChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Performance Metrics -->
+        <div class="section">
+            <h2>⚡ Performance Metrics</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.875rem;">
+                Estadísticas detalladas de rendimiento. <strong>Min/Max</strong> muestran el rango completo de tiempos
+                de respuesta,
+                <strong>Median</strong> es el valor central (50% de requests más rápidas, 50% más lentas), ideal para
+                representar la experiencia promedio del usuario.
+                Estas métricas ayudan a identificar la variabilidad del sistema bajo carga. Un rango muy amplio (Min vs
+                Max) sugiere inconsistencia en el rendimiento.
+            </p>
+            <div class="stats-row">
+                <div class="stat-item">
+                    <span class="stat-name">Test Duration</span>
+                    <span class="stat-value" id="duration">-</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-name">Scenarios Completed</span>
+                    <span class="stat-value" id="scenarios">-</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-name">Min Response</span>
+                    <span class="stat-value" id="min-response">-</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-name">Median Response</span>
+                    <span class="stat-value" id="median-response">-</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-name">Max Response</span>
+                    <span class="stat-value" id="max-response">-</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-name">Request Rate</span>
+                    <span class="stat-value" id="req-rate">-</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decision Metrics -->
+        <div class="section">
+            <h2>🎯 Decision Metrics</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.875rem;">
+                Métricas clave para toma de decisiones. <strong>Apdex</strong> mide satisfacción (≥0.94 = Excellent),
+                <strong>CV</strong> mide consistencia (≤25% = bueno), <strong>Tail Ratio</strong> detecta outliers (≤2x
+                = ideal).
+            </p>
+            <div class="stats-row">
+                <div class="stat-item">
+                    <span class="stat-name">Apdex Score (T=1s)</span>
+                    <span class="stat-value" id="apdex-detail">-</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-name">Consistency (CV)</span>
+                    <span class="stat-value" id="consistency">-</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-name">Tail Ratio</span>
+                    <span class="stat-value" id="tail-ratio">-</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-name">Error Budget</span>
+                    <span class="stat-value" id="error-budget">-</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Error Breakdown -->
+        <div class="section" id="errors-section" style="display: none;">
+            <h2>❌ Error Breakdown</h2>
+            <table id="errors-table">
+                <thead>
+                    <tr>
+                        <th>Error Type</th>
+                        <th>Count</th>
+                        <th>Percentage</th>
+                    </tr>
+                </thead>
+                <tbody id="errors-tbody"></tbody>
+            </table>
+        </div>
+
+        <!-- Endpoint Performance with Tabs -->
+        <div class="section" id="endpoints-section">
+            <h2>🎯 Endpoint Performance</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.875rem;">
+                Rendimiento individual de cada endpoint ordenado por P95 (peor a mejor). Los endpoints con <strong>P95 >
+                    2s</strong> necesitan optimización urgente,
+                <strong>P95 1-2s</strong> requieren monitoreo cercano, <strong>P95 < 1s</strong> están saludables.
+                        La diferencia entre Min y Max indica variabilidad - rangos grandes sugieren problemas de
+                        consistencia, caching ineficiente, o queries N+1.
+                        Usa estos datos para priorizar optimizaciones de performance.
+            </p>
+
+            <div class="tabs">
+                <button class="tab-button active" onclick="switchTab('endpoints', 0)">All Endpoints</button>
+                <button class="tab-button" onclick="switchTab('endpoints', 1)">Slow (P95 > 1s)</button>
+                <button class="tab-button" onclick="switchTab('endpoints', 2)">Fast (P95 ≤ 1s)</button>
+            </div>
+
+            <div class="tab-content active" id="endpoints-tab-0">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Endpoint</th>
+                            <th>Min (s)</th>
+                            <th>Median (s)</th>
+                            <th>P95 (s)</th>
+                            <th>P99 (s)</th>
+                            <th>Max (s)</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="endpoints-all"></tbody>
+                </table>
+            </div>
+
+            <div class="tab-content" id="endpoints-tab-1">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Endpoint</th>
+                            <th>Min (s)</th>
+                            <th>Median (s)</th>
+                            <th>P95 (s)</th>
+                            <th>P99 (s)</th>
+                            <th>Max (s)</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="endpoints-slow"></tbody>
+                </table>
+            </div>
+
+            <div class="tab-content" id="endpoints-tab-2">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Endpoint</th>
+                            <th>Min (s)</th>
+                            <th>Median (s)</th>
+                            <th>P95 (s)</th>
+                            <th>P99 (s)</th>
+                            <th>Max (s)</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="endpoints-fast"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Recommendations -->
+        <div class="section">
+            <div class="recommendations" id="recommendations"></div>
+        </div>
+    </div>
+
+    <script>
+        /*INJECT_DATA_HERE*/
+
+        // Tab Management
+        function switchTab(group, index) {
+            const section = document.getElementById(group + '-section');
+            if (!section) return;
+
+            section.querySelectorAll('.tab-button').forEach((btn, i) => {
+                btn.classList.toggle('active', i === index);
+            });
+            section.querySelectorAll('.tab-content').forEach((content, i) => {
+                content.classList.toggle('active', i === index);
+            });
+        }
+
+        // Theme Management
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+            updateCharts();
+        }
+
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+
+        // Utilities
+        function toSeconds(ms) {
+            return (ms / 1000).toFixed(3);
+        }
+
+        function getColor(name) {
+            const style = getComputedStyle(document.body);
+            return style.getPropertyValue('--' + name).trim();
+        }
+
+        let charts = {};
+
+        // Main Initialization
+        document.addEventListener('DOMContentLoaded', () => {
+            populateMetadata();
+            populateMetrics();
+            createCharts();
+            populateEndpointTables();
+            populateErrorTable();
+            generateAlerts();
+            generateRecommendations();
+        });
+
+        function populateMetadata() {
+            const { metadata, analysis } = artilleryData;
+
+            document.getElementById('metadata-scenario').textContent = metadata.scenarioName;
+            document.getElementById('metadata-start-time').textContent = new Date(metadata.timestamp).toLocaleString();
+            document.getElementById('metadata-duration').textContent = analysis.testDuration;
+        }
+
+        function populateMetrics() {
+            const { summary, analysis } = artilleryData;
+
+            document.getElementById('timestamp').textContent = `Generated: ${new Date().toLocaleString()}`;
+
+            // Summary Table Population
+            document.getElementById('total-requests').textContent = summary.totalRequests.toLocaleString();
+            document.getElementById('success-rate').innerHTML = `${summary.successRate}<small>%</small>`;
+            document.getElementById('success-count').textContent = `${summary.totalResponses.toLocaleString()} peticiones exitosas (OK)`;
+            document.getElementById('avg-response').textContent = toSeconds(summary.responseTime.mean) + ' s';
+            document.getElementById('p95-response').textContent = toSeconds(summary.responseTime.p95) + ' s';
+            document.getElementById('p99-response').textContent = toSeconds(summary.responseTime.p99) + ' s';
+            document.getElementById('throughput').textContent = summary.throughput.toFixed(1) + ' req/s';
+            document.getElementById('apdex').textContent = analysis.apdex.toFixed(2);
+            document.getElementById('apdex-rating').textContent = `Rating: ${getApdexRating(analysis.apdex)}`;
+            document.getElementById('error-rate').innerHTML = `${summary.errorRate}<small>%</small>`;
+            document.getElementById('error-count').textContent = `${summary.totalErrors} errores encontrados`;
+
+            // Performance metrics
+            document.getElementById('duration').textContent = analysis.testDuration;
+            document.getElementById('scenarios').textContent = `${summary.scenariosCompleted} / ${summary.scenariosCreated}`;
+            document.getElementById('min-response').textContent = toSeconds(summary.responseTime.min) + ' s';
+            document.getElementById('median-response').textContent = toSeconds(summary.responseTime.median) + ' s';
+            document.getElementById('max-response').textContent = toSeconds(summary.responseTime.max) + ' s';
+            document.getElementById('req-rate').textContent = summary.throughput.toFixed(2) + ' req/s';
+
+            // Decision metrics
+            document.getElementById('apdex-detail').textContent = `${analysis.apdex.toFixed(2)} (${getApdexRating(analysis.apdex)})`;
+            document.getElementById('consistency').textContent = `${analysis.consistencyScore}% (${getConsistencyRating(analysis.consistencyScore)})`;
+            document.getElementById('tail-ratio').textContent = `${analysis.tailRatio}x`;
+            document.getElementById('error-budget').textContent = `${analysis.errorBudgetConsumed}%`;
+        }
+
+        function createCharts() {
+            createResponseTimeChart();
+            createThroughputChart();
+            createHttpCodesChart();
+        }
+
+        function createResponseTimeChart() {
+            const ctx = document.getElementById('responseTimeChart').getContext('2d');
+            const labels = artilleryData.timeSeries.map((_, i) => `${i * 10}s`);
+
+            charts.responseTime = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels,
+                    datasets: [
+                        {
+                            label: 'Median',
+                            data: artilleryData.timeSeries.map(d => d.responseTime.median),
+                            borderColor: getColor('accent'),
+                            backgroundColor: getColor('accent') + '20',
+                            tension: 0.4,
+                            fill: true
+                        },
+                        {
+                            label: 'P95',
+                            data: artilleryData.timeSeries.map(d => d.responseTime.p95),
+                            borderColor: getColor('warning'),
+                            backgroundColor: getColor('warning') + '20',
+                            tension: 0.4,
+                            fill: true
+                        },
+                        {
+                            label: 'P99',
+                            data: artilleryData.timeSeries.map(d => d.responseTime.p99),
+                            borderColor: getColor('error'),
+                            backgroundColor: getColor('error') + '20',
+                            tension: 0.4,
+                            fill: true
+                        }
+                    ]
+                },
+                options: getChartOptions('Response Time (ms)')
+            });
+        }
+
+        function createThroughputChart() {
+            const ctx = document.getElementById('throughputChart').getContext('2d');
+            const labels = artilleryData.timeSeries.map((_, i) => `${i * 10}s`);
+
+            charts.throughput = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels,
+                    datasets: [
+                        {
+                            label: 'Requests',
+                            data: artilleryData.timeSeries.map(d => d.requests),
+                            borderColor: getColor('success'),
+                            backgroundColor: getColor('success') + '40',
+                            yAxisID: 'y',
+                            tension: 0.4,
+                            fill: true
+                        },
+                        {
+                            label: 'Errors',
+                            data: artilleryData.timeSeries.map(d => d.errors),
+                            borderColor: getColor('error'),
+                            backgroundColor: getColor('error') + '40',
+                            yAxisID: 'y',
+                            tension: 0.4,
+                            fill: true
+                        }
+                    ]
+                },
+                options: getChartOptions('Count')
+            });
+        }
+
+        function createHttpCodesChart() {
+            const ctx = document.getElementById('httpCodesChart').getContext('2d');
+            const codes = Object.entries(artilleryData.httpCodes);
+
+            charts.httpCodes = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: codes.map(([code]) => `HTTP ${code}`),
+                    datasets: [{
+                        data: codes.map(([, count]) => count),
+                        backgroundColor: [
+                            getColor('success'),
+                            getColor('accent'),
+                            getColor('warning'),
+                            getColor('error'),
+                            '#8b5cf6'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: { color: getColor('text-primary') }
+                        }
+                    }
+                }
+            });
+        }
+
+        function getChartOptions(yLabel) {
+            return {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { labels: { color: getColor('text-primary') } }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: yLabel, color: getColor('text-secondary') },
+                        ticks: { color: getColor('text-secondary') },
+                        grid: { color: getColor('border') }
+                    },
+                    x: {
+                        ticks: { color: getColor('text-secondary') },
+                        grid: { color: getColor('border') }
+                    }
+                }
+            };
+        }
+
+        function updateCharts() {
+            Object.values(charts).forEach(chart => {
+                chart.options.plugins.legend.labels.color = getColor('text-primary');
+                if (chart.options.scales) {
+                    chart.options.scales.y.title.color = getColor('text-secondary');
+                    chart.options.scales.y.ticks.color = getColor('text-secondary');
+                    chart.options.scales.y.grid.color = getColor('border');
+                    chart.options.scales.x.ticks.color = getColor('text-secondary');
+                    chart.options.scales.x.grid.color = getColor('border');
+                }
+                chart.update();
+            });
+        }
+
+        function populateEndpointTables() {
+            const endpoints = artilleryData.endpoints;
+            if (endpoints.length === 0) return;
+
+            endpoints.sort((a, b) => b.metrics.p95 - a.metrics.p95);
+
+            const all = endpoints;
+            const slow = endpoints.filter(e => parseFloat(toSeconds(e.metrics.p95)) > 1);
+            const fast = endpoints.filter(e => parseFloat(toSeconds(e.metrics.p95)) <= 1);
+
+            populateEndpointTable('endpoints-all', all);
+            populateEndpointTable('endpoints-slow', slow);
+            populateEndpointTable('endpoints-fast', fast);
+        }
+
+        function populateEndpointTable(tbodyId, endpoints) {
+            const tbody = document.getElementById(tbodyId);
+
+            if (endpoints.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; padding: 2rem; color: var(--text-secondary);">No endpoints in this category</td></tr>';
+                return;
+            }
+
+            endpoints.forEach(endpoint => {
+                const p95Sec = parseFloat(toSeconds(endpoint.metrics.p95));
+                const status = p95Sec > 2 ? 'error' : p95Sec > 1 ? 'warning' : 'success';
+                const statusText = p95Sec > 2 ? '⚠️ Slow' : p95Sec > 1 ? '⏱️ Fair' : '✓ Good';
+
+                const row = tbody.insertRow();
+                row.innerHTML = `
+                    <td><code>${endpoint.url}</code></td>
+                    <td>${toSeconds(endpoint.metrics.min)}</td>
+                    <td>${toSeconds(endpoint.metrics.median)}</td>
+                    <td class="status-${status}">${toSeconds(endpoint.metrics.p95)}</td>
+                    <td>${toSeconds(endpoint.metrics.p99)}</td>
+                    <td>${toSeconds(endpoint.metrics.max)}</td>
+                    <td><span class="badge badge-${status}">${statusText}</span></td>
+                `;
+            });
+        }
+
+        function populateErrorTable() {
+            const errors = artilleryData.errors;
+            const entries = Object.entries(errors);
+
+            if (entries.length === 0) return;
+
+            document.getElementById('errors-section').style.display = 'block';
+            const tbody = document.getElementById('errors-tbody');
+            const totalErrors = entries.reduce((sum, [, count]) => sum + count, 0);
+
+            entries.forEach(([type, count]) => {
+                const percentage = ((count / totalErrors) * 100).toFixed(1);
+                const row = tbody.insertRow();
+                row.innerHTML = `
+                    <td><code>${type}</code></td>
+                    <td>${count}</td>
+                    <td>${percentage}%</td>
+                `;
+            });
+        }
+
+        function generateAlerts() {
+            const { summary, analysis } = artilleryData;
+            const alerts = [];
+
+            if (parseFloat(summary.errorRate) > 1) {
+                alerts.push({ type: 'error', msg: `⚠️ High error rate: ${summary.errorRate}%` });
+            }
+            if (analysis.apdex < 0.7) {
+                alerts.push({ type: 'warning', msg: `📉 Poor Apdex: ${analysis.apdex} - Users experiencing slow responses` });
+            }
+            if (analysis.tailRatio > 3) {
+                alerts.push({ type: 'warning', msg: `📊 High tail latency: ${analysis.tailRatio}x` });
+            }
+            if (parseFloat(summary.successRate) < 99) {
+                alerts.push({ type: 'warning', msg: `🔴 Success below 99%: ${summary.successRate}%` });
+            }
+
+            if (alerts.length > 0) {
+                document.getElementById('alerts-section').style.display = 'block';
+                const container = document.getElementById('alerts-container');
+                alerts.forEach(alert => {
+                    const div = document.createElement('div');
+                    div.className = `alert alert-${alert.type}`;
+                    div.textContent = alert.msg;
+                    container.appendChild(div);
+                });
+            }
+        }
+
+        function generateRecommendations() {
+            const { analysis } = artilleryData;
+            const recs = [];
+
+            if (analysis.apdex < 0.85) recs.push('Optimizar endpoints lentos o escalar infraestructura');
+            if (analysis.consistencyScore > 50) recs.push('Alta varianza detectada - investigar contención de recursos');
+            if (analysis.tailRatio > 2.5) recs.push('Optimizar tail latencies - revisar N+1 queries o cache misses');
+            if (analysis.errorBudgetConsumed > 50) recs.push('Error budget consumiéndose - priorizar confiabilidad');
+
+            const container = document.getElementById('recommendations');
+
+            if (recs.length > 0) {
+                container.innerHTML = '<h3>💡 Recommendations</h3><ul>' +
+                    recs.map(r => `<li>${r}</li>`).join('') + '</ul>';
+            } else {
+                container.innerHTML = '<h3>✅ All metrics healthy!</h3><p style="margin-top: 0.5rem;">System performing well.</p>';
+            }
+        }
+
+        function getApdexRating(score) {
+            if (score >= 0.94) return 'Excellent';
+            if (score >= 0.85) return 'Good';
+            if (score >= 0.70) return 'Fair';
+            if (score >= 0.50) return 'Poor';
+            return 'Unacceptable';
+        }
+
+        function getConsistencyRating(cv) {
+            if (cv <= 10) return 'Very Consistent';
+            if (cv <= 25) return 'Consistent';
+            if (cv <= 50) return 'Moderate';
+            return 'Inconsistent';
+        }
+    </script>
+</body>
+
+</html>
