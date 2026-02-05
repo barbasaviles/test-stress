@@ -63,14 +63,14 @@ scenarios:
           url: "/admin/dashboard/index"
           beforeRequest: "logHeaders"
           afterResponse: "logResponse"
-      - think: 2
+      - think: 6
 
       # Configuración inicial
       - get:
           url: "/admin/geolocalizacion/index"
           beforeRequest: "logHeaders"
           afterResponse: "logResponse"
-      - think: 1
+      - think: 2
 
       - get:
           url: "/admin/estados/index"
@@ -82,39 +82,39 @@ scenarios:
           url: "/admin/clasificaciones/index"
           beforeRequest: "logHeaders"
           afterResponse: "logResponse"
-      - think: 1.5
+      - think: 5
 
       # Gestión operativa
       - get:
           url: "/admin/casos-gestionados"
           beforeRequest: "logHeaders"
           afterResponse: "logResponse"
-      - think: 2
+      - think: 3
 
       - get:
           url: "/admin/grupos/index"
           beforeRequest: "logHeaders"
           afterResponse: "logResponse"
-      - think: 1
+      - think: 3
 
       - get:
           url: "/admin/usuarios/index"
           beforeRequest: "logHeaders"
           afterResponse: "logResponse"
-      - think: 1.5
+      - think: 2
 
       # Seguridad
       - get:
           url: "/admin/service-accounts/index"
           beforeRequest: "logHeaders"
           afterResponse: "logResponse"
-      - think: 1
+      - think: 2
 
       - get:
           url: "/admin/boveda-secretos/index"
           beforeRequest: "logHeaders"
           afterResponse: "logResponse"
-      - think: 2
+      - think: 1
 
       - get:
           url: "/admin/direcciones-permitidas/index"
@@ -133,4 +133,4 @@ scenarios:
           url: "/admin/app-config/index"
           beforeRequest: "logHeaders"
           afterResponse: "logResponse"
-      - think: 2
+      - think: 1
